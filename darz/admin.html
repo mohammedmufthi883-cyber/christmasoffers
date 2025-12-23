@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Offer Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">OFFER<span style="color:#fff">STORE</span> ADMIN</a>
+        <div>
+            <a href="index.html" class="nav-link">View Site</a>
+            <button id="logout-btn" class="btn-check-now"
+                style="display:inline-block; width:auto; margin-left:10px; padding: 5px 15px;">Logout</button>
+        </div>
+    </nav>
+
+    <!-- Marker for JS to init admin logic -->
+    <div id="admin-panel"></div>
+
+    <div class="container">
+
+        <!-- Add Product Section -->
+        <div class="admin-container">
+            <h2 class="section-title">Add / Edit Product</h2>
+            <form id="add-product-form">
+                <input type="hidden" id="p-id"> <!-- Hidden ID for editing -->
+                <div class="form-group">
+                    <label class="form-label">Product Title</label>
+                    <input type="text" id="p-title" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price</label>
+                    <input type="text" id="p-price" class="form-input" placeholder="$0.00" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Affiliate Link</label>
+                    <input type="url" id="p-link" class="form-input" placeholder="https://..." required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea id="p-desc" class="form-textarea" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Product Image (Thumbnail)</label>
+                    <input type="file" id="p-image" class="form-input" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Cover Image (Background)</label>
+                    <input type="file" id="p-cover-image" class="form-input" accept="image/*">
+                </div>
+                <button type="submit" id="save-product-btn" class="btn-primary">Save Product</button>
+                <button type="button" id="cancel-edit-btn" class="btn-primary"
+                    style="background-color: #666; display:none;">Cancel Edit</button>
+            </form>
+        </div>
+
+        <!-- Manage Ads Section -->
+        <div class="admin-container">
+            <h2 class="section-title">Manage Ads</h2>
+            <div class="form-group">
+                <label class="form-label">Slot 1 (Top)</label>
+                <select id="ad1-type" class="form-input" style="margin-bottom: 5px;">
+                    <option value="text">Text</option>
+                    <option value="image">Image File</option>
+                </select>
+                <input type="text" id="ad1-content" class="form-input" placeholder="Content (Text)">
+                <input type="file" id="ad1-file" class="form-input" accept="image/*" style="display:none;">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Slot 2 (Middle)</label>
+                <select id="ad2-type" class="form-input" style="margin-bottom: 5px;">
+                    <option value="text">Text</option>
+                    <option value="image">Image File</option>
+                </select>
+                <input type="text" id="ad2-content" class="form-input" placeholder="Content (Text)">
+                <input type="file" id="ad2-file" class="form-input" accept="image/*" style="display:none;">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Slot 3 (Bottom)</label>
+                <select id="ad3-type" class="form-input" style="margin-bottom: 5px;">
+                    <option value="text">Text</option>
+                    <option value="image">Image File</option>
+                </select>
+                <input type="text" id="ad3-content" class="form-input" placeholder="Content (Text)">
+                <input type="file" id="ad3-file" class="form-input" accept="image/*" style="display:none;">
+            </div>
+            <button id="save-ads-btn" class="btn-primary">Save Ads</button>
+        </div>
+
+        <!-- Existing Products List -->
+        <div class="container">
+            <h2 class="section-title">Existing Products</h2>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-product-list">
+                    <!-- JS Injected -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
